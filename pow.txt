@@ -1,0 +1,33 @@
+#include<iostream>
+#include<vector>
+using namespace std;
+int main()
+{
+	unsigned int n,input;
+	while (cin>>input>>n)
+	{
+		
+		vector<int>num;
+		int check = 0;
+		num.push_back(1);
+		int carry = 0;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j <=check; j++)
+			{
+					
+				num[j] = num[j] * input+carry;
+				carry = num[j] / 10;
+				if (carry != 0 && check == j)
+				{
+					num.push_back(0);
+					check++;
+				}
+				num[j] = num[j] % 10;
+			}
+		}
+		for (int i =check; i >= 0; i--)
+			cout << num[i];
+		cout << endl;
+	}
+}
